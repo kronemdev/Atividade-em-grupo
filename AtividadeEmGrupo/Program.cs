@@ -4,12 +4,27 @@ decimal salario = 0.00m;
 int menu = 0;
 int qtdMeses = 0;
 
-
+// Metódo para receber o valor de salário e verificar
+// se o valor digitado é válido para retornar ao sistema
 decimal ReceberSalario()
 {
     Console.Write("Informe o salário: ");
-    decimal infSalario = decimal.Parse(Console.ReadLine());
-    return infSalario;
+
+    if (!decimal.TryParse(Console.ReadLine(), out decimal infSalario))
+    {
+        Console.Clear();
+        Console.WriteLine("========================================================");
+        Console.WriteLine("Por favor! Digite um número válido!");
+        Console.WriteLine("========================================================");
+        control = true;
+        return infSalario;
+    }
+    else
+    {
+        return infSalario;
+    }
+    //decimal infSalario = decimal.Parse(Console.ReadLine());
+    //return infSalario;
 }
 // Laço de repetição do programa
 do
@@ -28,7 +43,9 @@ do
     if (!int.TryParse(Console.ReadLine(), out menu))
     {
         Console.Clear();
+        Console.WriteLine("========================================================");
         Console.WriteLine("Por favor! Digite um número válido!");
+        Console.WriteLine("========================================================");
         control = true;
     }
     else
@@ -42,7 +59,7 @@ do
                 {
                     salario += salario * 0.15m;
                 }
-                else if (salario > 350.00m || salario <= 600.00m)
+                else if (salario > 350.00m && salario <= 600.00m)
                 {
                     salario += salario * 0.10m;
                 }
@@ -55,7 +72,7 @@ do
                 Console.Clear();
                 Console.WriteLine("========================================================");
                 Console.WriteLine($"O novo salário é R$ {salario:F2}");
-                Console.WriteLine($"Pressione qualquer tecla para retornar ao menu.");
+                Console.WriteLine($"Pressione Enter para retornar ao menu.");
                 Console.WriteLine("========================================================");
                 Console.ReadLine();
                 Console.Clear();
@@ -70,7 +87,7 @@ do
                 Console.Clear();
                 Console.WriteLine("========================================================");
                 Console.WriteLine($"O valor das Férias é R$ {salario:F2}");
-                Console.WriteLine($"Pressione qualquer tecla para retornar ao menu.");
+                Console.WriteLine($"Pressione Enter para retornar ao menu.");
                 Console.WriteLine("========================================================");
                 Console.ReadLine();
                 Console.Clear();
@@ -87,7 +104,7 @@ do
                     Console.Clear();
                     Console.WriteLine("========================================================");
                     Console.WriteLine("Informe a quantidade de meses entre 1 e 12.");
-                    Console.WriteLine($"Pressione qualquer tecla para retornar ao menu.");
+                    Console.WriteLine($"Pressione Enter para retornar ao menu.");
                     Console.WriteLine("========================================================");
                     Console.ReadLine();
                     Console.Clear();
@@ -101,7 +118,7 @@ do
                     Console.Clear();
                     Console.WriteLine("========================================================");
                     Console.WriteLine($"O valor do seu décimo terceiro é: R$ {salario:F2}");
-                    Console.WriteLine($"Pressione qualquer tecla para retornar ao menu.");
+                    Console.WriteLine($"Pressione Enter para retornar ao menu.");
                     Console.WriteLine("========================================================");
                     Console.ReadLine();
                     Console.Clear();
@@ -122,7 +139,7 @@ do
                 Console.Clear();
                 Console.WriteLine("========================================================");
                 Console.WriteLine("Opção inválida!");
-                Console.WriteLine($"Pressione qualquer tecla para retornar ao menu.");
+                Console.WriteLine($"Pressione Enter para retornar ao menu.");
                 Console.WriteLine("========================================================");
                 Console.ReadLine();
                 Console.Clear();
